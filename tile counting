@@ -1,0 +1,20 @@
+def oblicz_liczbę_płytek_na_podłogę():
+    # Proszę użytkownika o podanie wymiarów podłogi
+    długość_podłogi = float(input("Podaj długość podłogi (w metrach): "))
+    szerokość_podłogi = float(input("Podaj szerokość podłogi (w metrach): "))
+
+    # Proszę użytkownika o podanie wymiarów płytki
+    długość_płytki = float(input("Podaj długość płytki (w metrach): "))
+    szerokość_płytki = float(input("Podaj szerokość płytki (w metrach): "))
+
+    # Obliczamy powierzchnię podłogi i powierzchnię jednej płytki
+    powierzchnia_podłogi = długość_podłogi * szerokość_podłogi
+    powierzchnia_płytki = długość_płytki * szerokość_płytki
+
+    # Obliczamy ilość płytek potrzebnych do wyłożenia podłogi
+    ilość_płytek = powierzchnia_podłogi / powierzchnia_płytki
+
+    print(f"Do wyłożenia podłogi potrzeba {ilość_płytek:.2f} płytek.")
+
+# Wywołanie funkcji do obliczenia ilości potrzebnej płytki na podłogę
+oblicz_liczbę_płytek_na_podłogę()
