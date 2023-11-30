@@ -1,0 +1,25 @@
+def calculate_beam_thickness(span, load, material_constant):
+    # span - length of the beam (in meters)
+    # load - uniform load on the beam (in newtons)
+    # material_constant - material constant of the beam (depends on the material, e.g., for wood)
+
+    # Material parameters (example for wood)
+    allowable_stress = 10  # allowable stress for the material in N/m^2
+
+    # Calculation of the moment of inertia of the beam (example for a rectangular cross-section)
+    b = 0.1  # width of the beam in meters
+    h = 0.2  # height of the beam in meters
+    moment_of_inertia = (b * h**3) / 12
+
+    # Calculation of the beam thickness using the Euler-Bernoulli equation
+    thickness = ((load * span**3) / (4 * material_constant * allowable_stress * moment_of_inertia))**(1/4)
+
+    return thickness
+
+# Example of usage
+span_length = 5  # length of the beam in meters
+uniform_load = 1000  # uniform load in newtons
+material_constant_wood = 1  # material constant for wood (example)
+
+result_thickness = calculate_beam_thickness(span_length, uniform_load, material_constant_wood)
+print(f"Beam thickness: {result_thickness} meters")
