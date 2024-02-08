@@ -1,0 +1,31 @@
+import math
+
+def water_supply(flow_rate, pipe_diameter, viscosity=0.001, density=1000):
+    """
+    Calculate water supply in a pipe using the Hagen-Poiseuille equation.
+
+    Parameters:
+    - flow_rate: Flow rate of water in liters per second (L/s).
+    - pipe_diameter: Diameter of the pipe in meters (m).
+    - viscosity: Dynamic viscosity of water in Pascal-seconds (Pa.s).
+    - density: Density of water in kilograms per cubic meter (kg/m^3).
+
+    Returns:
+    - water_supply: Water supply in cubic meters per second (m^3/s).
+    """
+    radius = pipe_diameter / 2
+    cross_sectional_area = math.pi * radius ** 2
+    velocity = flow_rate / cross_sectional_area
+    pressure_drop = 128 * viscosity * velocity / (density * radius ** 2)
+    water_supply = flow_rate - (pressure_drop * cross_sectional_area)
+    return water_supply
+
+def main():
+    flow_rate = float(input("Enter the flow rate of water (L/s): "))
+    pipe_diameter = float(input("Enter the diameter of the pipe (m): "))
+
+    supply = water_supply(flow_rate, pipe_diameter)
+    print("Water supply in the pipe: {:.2f} m^3/s".format(supply))
+
+if __name__ == "__main__":
+    main()
