@@ -1,0 +1,31 @@
+def oblicz_okablowanie(powierzchnia, liczba_pomieszczen):
+    # Średnie zapotrzebowanie na moc waty/m^2
+    srednie_zapotrzebowanie = 100  # Przykładowa wartość
+
+    # Moc całkowita w Watach
+    moc_calkowita = powierzchnia * srednie_zapotrzebowanie * liczba_pomieszczen
+
+    # Ustalanie przekroju przewodu w zależności od mocy
+    if moc_calkowita <= 1000:
+        przekroj = 1.5  # mm^2
+    elif moc_calkowita <= 2000:
+        przekroj = 2.5  # mm^2
+    elif moc_calkowita <= 3000:
+        przekroj = 4  # mm^2
+    else:
+        przekroj = 6  # mm^2
+
+    return moc_calkowita, przekroj
+
+def main():
+    print("Program do obliczania okablowania elektrycznego w mieszkaniu")
+    powierzchnia = float(input("Podaj powierzchnię mieszkania w metrach kwadratowych: "))
+    liczba_pomieszczen = int(input("Podaj liczbę pomieszczeń w mieszkaniu: "))
+
+    moc, przekroj = oblicz_okablowanie(powierzchnia, liczba_pomieszczen)
+
+    print(f"Całkowita moc: {moc} W")
+    print(f"Zalecany przekrój przewodu: {przekroj} mm^2")
+
+if __name__ == "__main__":
+    main()
